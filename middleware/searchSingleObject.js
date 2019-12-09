@@ -1,33 +1,18 @@
 const express = require('express')
 const app = express.Router()
-const User = require('../models/user')
-const Class = require('../models/class')
+const Game = require('../models/game')
 
-async function getUser(req, res, next) {
+async function getGame(req, res, next) {
     try {
-        user = await User.findById(req.params.id).populate('_class')
-        if (user == null) {
-            return res.status(404).json({ message: 'Cant find user'})
+        game = await Game.findById(req.params.id).populate('_class')
+        if (game == null) {
+            return res.status(404).json({ message: 'Cant find game'})
         }
     } catch(err){
         return res.status(500).json({ message: err.message })
     }
   
-    res.user = user
-    next()
-}
-
-async function getClass(req, res, next) {
-    try {
-        oneClass = await Class.findById(req.params.id).populate('_class')
-        if (oneClass == null) {
-            return res.status(404).json({ message: 'Cant find class'})
-        }
-    } catch(err){
-        return res.status(500).json({ message: err.message })
-    }
-  
-    res.oneClass = oneClass
+    res.game = game
     next()
 }
 
