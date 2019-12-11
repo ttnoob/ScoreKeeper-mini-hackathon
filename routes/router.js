@@ -1,7 +1,6 @@
 const express = require('express')
 const app = express.Router()
-const Game = require('../models/game')
-const Util = require('../middleware/searchSingleObject')
+const Game = require('../models/game.js')
 
 
 // query user, class with and without params
@@ -25,4 +24,4 @@ app.post('/game/create', (req, res) => {
     })
 })
 
-module.exports = routergame
+module.exports = app
