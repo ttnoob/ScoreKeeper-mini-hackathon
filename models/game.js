@@ -17,4 +17,4 @@ function checkNumberOfPlayers(val) {
     val.length == 4;
 }
 
-module.exports = mongoose.model('Class', classSchema);
+module.exports = mongoose.model('Game', gameSchema);
