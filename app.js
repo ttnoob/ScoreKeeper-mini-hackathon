@@ -19,6 +19,10 @@ db.once('open', function() {
     console.log('connected');
 })
 
+// swagger
+var swagger = require('./swagger');
+swagger(app);
+
 app.use('/', router);
 
 app.listen(3000, function() {
