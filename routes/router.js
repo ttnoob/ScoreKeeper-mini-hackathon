@@ -28,12 +28,65 @@ app.post('/game', (req, res) => {
             })
         } else {
             res.json({
-                message: 'success',
-                data: data._id,
-                sucesss: true
-            })
+                message: "New game created successfully",
+                gameId: data._id.toString(),
+                success: true
+            });
         }
     })
+})
+/**
+ * @swagger
+ * /game/get:
+ *  post:
+ *      tags: 
+ *          - API TAG
+ *      name: Api create a game given players name
+ *      summary: Api create game
+ *      consumes:
+ *          - application/json
+ *      parameters:
+ *          -   name: body
+ *              in: body
+ *              type: object
+ *              required: true
+ *              schema:
+ *                  type: object
+ *                  properties:
+ *                      gameId: 
+ *                          type: string
+ *                  example: {
+ *                      "gameId" : "5df269713777def6c378ed71"
+ *                  }
+ *      responses:
+ *          -   name: body
+ *              in: body
+ *              schema: 
+ *                  type: object
+ *                  properties:
+ *                      success:
+ *                          type: boolean
+ */
+app.get('/game/get', (req, res) => {
+    let players;
+    console.log("req.query.gameId: " + req.query.gameId);
+    let gameId = req.query.gameId;
+    if (gameId) {
+        let game = Game.findById(gameId, function (err, data) {
+            if (err) {
+                res.json({
+                    message: err.errors,
+                    success: false
+                });
+            } else {
+                console.log("Game found: ", JSON.stringify(data));
+                res.json({
+                    game: data,
+                    success: true
+                });
+            }
+        });
+    }
 })
 
 // // query user, class with and without params

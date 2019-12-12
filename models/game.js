@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 
 let Schema = mongoose.Schema
 
+function checkNumberOfPlayers(val) {
+    return val.length == 4;
+}
+
 let gameSchema = new Schema({
     playerName: {
         type: [String],

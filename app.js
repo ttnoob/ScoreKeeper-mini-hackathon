@@ -7,8 +7,8 @@ const router = require('./routes/router')
 const app = express();
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
-
+// app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded());
 // parse application/json
 app.use(bodyParser.json());
 
@@ -21,6 +21,10 @@ db.on('error', console.error.bind(console, 'connection error:'))
 db.once('open', function() {
     console.log('connected');
 })
+
+// swagger
+var swagger = require('./swagger');
+swagger(app);
 
 app.use('/', router);
 
