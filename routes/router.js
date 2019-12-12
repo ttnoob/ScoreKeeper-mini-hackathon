@@ -25,7 +25,7 @@ app.post('/game', (req, res) => {
         if (err) {
             res.json({
                 message: err,
-                sucesss: false
+                success: false
             })
         } else {
             res.json({
