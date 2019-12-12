@@ -5,7 +5,7 @@ const Game = require('../models/game')
 
 async function getGame(req, res, next) {
     try {
-        game = await Game.findById(req.params.id).populate('_class')
+        game = await Game.findById(req.params.id)
         if (game == null) {
             return res.status(404).json({ message: 'Cant find game'})
         }
@@ -20,8 +20,8 @@ async function getGame(req, res, next) {
 // create game (post)
 app.post('/game', (req, res) => {
     const newGame = new Game(req.body);
+    console.log(req.body)
     newGame.save((err, data) => {
-        console.log(data._id)
         if (err) {
             res.json({
                 message: err,
@@ -36,6 +36,14 @@ app.post('/game', (req, res) => {
         }
     })
 })
+
+// // query user, class with and without params
+// app.post('/game/create', (req, res) => {
+//     let players;
+
+//     let game = new Game({players: req.query.names});
+
+//     newClass.save(function (err, data) {
 
 // query game single id (get)
 // app.get('/user/:id', Util.getUser, (req, res) => {

@@ -3,25 +3,22 @@ const mongoose = require('mongoose');
 let Schema = mongoose.Schema
 
 let gameSchema = new Schema({
-    playerName: [{
-        type: {
-            type: String,
-            require: true
-        },
-        validate: [checkNumberOfPlayers, 'Number of Players should be 4']
-    }],
+    playerName: {
+        type: [String],
+        required: true,
+    },
     round: [{
-        type: Array,
+        type: [Number],
         default: null
     }],
-    result: {
-        type: Array,
+    result: [{
+        type: Number,
         default: null
-    }
+    }]
 })
 
 function checkNumberOfPlayers(val) {
-    val.length == 4;
+    return val.length === 4;
 }
 
-module.exports = mongoose.model('Class', classSchema);
+module.exports = mongoose.model('Game', gameSchema);
