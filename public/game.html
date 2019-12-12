@@ -19,7 +19,7 @@
         crossorigin="anonymous"></script>
     <title>A Mini Score Keeper Game</title>
     <link href="game.css" rel="stylesheet">
-    <script src="game.js"></script>
+    <script src="game-jquery.js"></script>
 </head>
 
 <body>
@@ -33,10 +33,10 @@
             <thead>
                 <tr id="PlayerName">
                     <th scope="col" id="PlayerNameSign"></th>
-                    <th scope="col">Player1</th>
-                    <th scope="col">Player2</th>
-                    <th scope="col">Player3</th>
-                    <th scope="col">Player4</th>
+                    <th scope="col" id="Player1">Player1</th>
+                    <th scope="col" id="Player2">Player2</th>
+                    <th scope="col" id="Player3">Player3</th>
+                    <th scope="col" id="Player4">Player4</th>
                 </tr>
                 <tr id="sumOfScores">
                     <th scope="col" id="sumOfScoreName">Sum of Scores(0)</th>
@@ -47,15 +47,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr id="row1">
                     <th scope="row">Round 1</th>
-                    <td><input type="text" class="form-control w-auto" placeholder="0" aria-label="" aria-describedby="basic-addon1"></td>
+                    <td><input type="text" class="form-control w-auto val1" placeholder="0" aria-label="" aria-describedby="basic-addon1"></td>
                     
-                    <td><input type="text" class="form-control w-auto" placeholder="0" aria-label="" aria-describedby="basic-addon1"></td>
+                    <td><input type="text" class="form-control w-auto val2" placeholder="0" aria-label="" aria-describedby="basic-addon1"></td>
                     
-                    <td><input type="text" class="form-control w-auto" placeholder="0" aria-label="" aria-describedby="basic-addon1"></td>
+                    <td><input type="text" class="form-control w-auto val3" placeholder="0" aria-label="" aria-describedby="basic-addon1"></td>
                     
-                    <td><input type="text" class="form-control w-auto" placeholder="0" aria-label="" aria-describedby="basic-addon1"></td>
+                    <td><input type="text" class="form-control w-auto val4" placeholder="0" aria-label="" aria-describedby="basic-addon1"></td>
                 </tr>
             </tbody>
         </table>
