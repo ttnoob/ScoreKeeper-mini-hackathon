@@ -20,7 +20,6 @@ async function getGame(req, res, next) {
 // create game (post)
 app.post('/game', (req, res) => {
     const newGame = new Game(req.body);
-    console.log(req.body)
     newGame.save((err, data) => {
         if (err) {
             res.json({
@@ -54,26 +53,25 @@ app.get('/game/:id', getGame, (req, res) => {
 })
 
 // modify round of player
-app.put('/game/:id/:rowIndex/:columnIndex', getGame, async (req, res) => {
-    if (!req.params.id || !req.params.rowIndex || !req.params.columnIndex) {
+app.patch('/game/:id/:rowIndex', getGame, async (req, res) => {
+    let rowIndex = Number(req.params.rowIndex)
+    if (!req.params.id || !req.params.rowIndex) {
         res.json({
             message: 'empty Id',
             success: false
         })
         return;
     }
-    console.log(res.game)
     if (req.body['round'] != null) {
-        res.game['round'][rowIndex][columnIndex] = re
-        req.body['round'][0] = 0
-        req.body['round'][1] = 0
-        req.body['round'][2] = 0
-        req.body['round'][3] = 0
-        res.game['round'].push(req.body['round'])
+        res.game['round'][rowIndex][0] = req.body.round[0]
+        res.game['round'][rowIndex][1] = req.body.round[1]
+        res.game['round'][rowIndex][2] = req.body.round[2]
+        res.game['round'][rowIndex][3] = req.body.round[3]
     } else {
         res.status(400).json({ message: err.message })
         return;
     }
+    console.log(res.game)
     // for (let arrChild of req.body['round']) {
     //     res.game['result'][0] += arrChild[0]
     //     res.game['result'][1] += arrChild[1]
@@ -89,7 +87,7 @@ app.put('/game/:id/:rowIndex/:columnIndex', getGame, async (req, res) => {
 })
 
 // add round (put game)
-app.put('/game/:id', getGame, async (req, res) => {
+app.patch('/game/:id', getGame, async (req, res) => {
     if (!req.params.id) {
         res.json({
             message: 'empty Id',
@@ -97,17 +95,8 @@ app.put('/game/:id', getGame, async (req, res) => {
         })
         return;
     }
-    console.log(res.game)
-    if (req.body['round'] != null) {
-        req.body['round'][0] = 0
-        req.body['round'][1] = 0
-        req.body['round'][2] = 0
-        req.body['round'][3] = 0
-        res.game['round'].push(req.body['round'])
-    } else {
-        res.status(400).json({ message: err.message })
-        return;
-    }
+    console.log(req.body['round'])
+    res.game['round'].push([0,0,0,0])
     // for (let arrChild of req.body['round']) {
     //     res.game['result'][0] += arrChild[0]
     //     res.game['result'][1] += arrChild[1]

@@ -24,6 +24,8 @@ db.once('open', function() {
 
 app.use('/', router);
 
+app.use('/public', express.static('./public'));
+
 app.listen(3000, function() {
     console.log('server listening on port 3000');
 })

@@ -8,8 +8,8 @@ let gameSchema = new Schema({
         required: true,
     },
     round: [{
-        type: [Number],
-        default: null
+        type: Array,
+        default: null,
     }],
     result: [{
         type: Number,
