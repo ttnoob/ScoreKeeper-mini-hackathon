@@ -1,0 +1,26 @@
+.game-name {
+    border-bottom: 1px solid grey;
+}
+
+body {
+    background-color: #FBFEF9;
+}
+
+.table
+{
+    margin-top: 40px;
+    border-bottom: 1px solid #BF1363;
+}
+
+#addRoundBtn {
+    background: #BF1363;
+    border: none;
+    align-items: center;
+}
+/* tr:nth-child(odd) {background: #CCC} */
+
+
+#sumOfScores {
+    background-color: #BF1363;
+    color: #333333;
+}
