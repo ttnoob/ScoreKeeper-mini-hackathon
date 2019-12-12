@@ -31,6 +31,9 @@ swagger(app);
  *                              type: string
  *                          minItems: 4
  *                          maxItems: 4
+ *                  example: {
+ *                      "players" : ["Player 1", "Player 2", "Player 3", "Player 4"]
+ *                  }
  *      responses:
  *          -   name: body
  *              in: body
