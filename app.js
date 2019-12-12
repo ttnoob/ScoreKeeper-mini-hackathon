@@ -9,7 +9,7 @@ const app = express();
 // app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.urlencoded());
 // parse application/json
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 
 mongoose.connect('mongodb://localhost:27017/ScoreKeeper', {useNewUrlParser: true});
 

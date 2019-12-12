@@ -25,7 +25,7 @@ $(document).ready(function () {
                 console.log("Add new game response: " + JSON.stringify(data));
                 if (data.success == true) {
                     console.log("Add new game response OK, gameId: ", data.gameId);
-                    window.location.assign('game.html');
+                    window.location.href='game.html?gameId='+data.gameId;
                     // location.reload(true);
                 }
             }, "json");
