@@ -57,9 +57,8 @@ swagger(app);
  */
 app.post('/game/create', (req, res) => {
     let players;
-
-    let game = new Game({players: req.query.names});
-
+    console.log("req.body: " + JSON.stringify(req.body));
+    let game = new Game(req.body);
     game.save(function (err, data) {
         if (err) {
             res.json({
@@ -68,7 +67,8 @@ app.post('/game/create', (req, res) => {
             });
         } else {
             res.json({
-                message: "New class created successfully, game id = " + this._id,
+                message: "New game created successfully",
+                gameId: data._id.toString(),
                 success: true
             });
         }
